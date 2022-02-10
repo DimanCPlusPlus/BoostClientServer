@@ -1,0 +1,3 @@
+-I/home/dima/CPP/ConsoleApp/headers/
+-std=c++17
+-o
