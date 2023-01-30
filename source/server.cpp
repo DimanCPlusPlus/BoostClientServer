@@ -9,7 +9,6 @@ using tcp=asio::ip::tcp;
 
 int main()
 {
-    std::string data{"Hello"};
     asio::io_context ioc;
     tcp::acceptor acceptor(ioc,tcp::endpoint(tcp::v4(),13));
     for(;;)
@@ -17,6 +16,8 @@ int main()
         tcp::socket socket(ioc);
         acceptor.accept(socket);
         std::cout<<"Good connect"<<std::endl;
+        std::string data;
+        std::cin>>data;
         readWriteSocket::writeSocket(socket, data.data(), data.size());
     }
     return 0;
