@@ -15,7 +15,10 @@ int main()
     {
         tcp::socket socket(ioc);
         acceptor.accept(socket);
-        std::cout<<"Good connect"<<std::endl;
+        tcp::endpoint remote_ep=socket.remote_endpoint();
+        asio::ip::address remote_ad = remote_ep.address();
+        std::string address=remote_ad.to_string();
+        std::cout<<"Good connect\nAddress connect - "<<address<<std::endl;
         for(;;){
             std::string data;
             std::cin>>data;
