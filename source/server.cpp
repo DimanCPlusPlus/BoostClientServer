@@ -16,9 +16,11 @@ int main()
         tcp::socket socket(ioc);
         acceptor.accept(socket);
         std::cout<<"Good connect"<<std::endl;
-        std::string data;
-        std::cin>>data;
-        readWriteSocket::writeSocket(socket, data);
+        for(;;){
+            std::string data;
+            std::cin>>data;
+            readWriteSocket::writeSocket(socket, data);
+        }
     }
     return 0;
 }

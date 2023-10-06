@@ -14,7 +14,9 @@ int main()
     tcp::socket socket(ioc);
     tcp::resolver::results_type endpoint=resolver.resolve("127.0.0.1","13");
     boost::asio::connect(socket,endpoint);
-    std::string data=readWriteSocket::readSocket(socket);
-    std::cout<<data<<std::endl;
+    for(;;){
+        std::string data=readWriteSocket::readSocket(socket);
+        std::cout<<data<<std::endl;
+    }
     return 0;
 }
