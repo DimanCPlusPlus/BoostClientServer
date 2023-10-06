@@ -17,7 +17,7 @@ class readWriteSocket
         int len=data.size();
         boost::asio::write(socket,boost::asio::buffer(&len,sizeof(int)));
         int transferedBytes=0;
-        while(transferedBytes!=len)
+        for(;transferedBytes!=len;)
         {
             transferedBytes+=boost::asio::write(socket,boost::asio::buffer(data.substr(transferedBytes),len));
         }
@@ -29,7 +29,7 @@ class readWriteSocket
         std::string data;
         data.resize(len);
         int transferedBytes=0;
-        while(transferedBytes!=len)
+        for(;transferedBytes!=len;)
         {
             transferedBytes+=boost::asio::read(socket,boost::asio::buffer(data.data()+transferedBytes,len));
         }
